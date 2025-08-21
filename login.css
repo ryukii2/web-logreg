@@ -1,0 +1,827 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/*body styles*/
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    flex-direction: column;
+    background-color: #f0f8ff;
+}
+
+/*hHeader styles */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px 5%;
+    background-color: darkcyan;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 99;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo Container */
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logosby {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.logo, .logo1 {
+    color: white;
+    margin: 0;
+    font-weight: 600;
+}
+
+.logo {
+    font-size: 1.4em;
+}
+
+.logo1 {
+    font-size: 1em;
+    opacity: 0.9;
+}
+
+/* Navigation */
+.navigation {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.navigation a {
+    position: relative;
+    font-size: 1.1em;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.navigation a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 3px;
+    background: #fff;
+    border-radius: 5px;
+    transform: scaleX(0);
+    transition: transform 0.5s;
+    transform-origin: right;
+}
+
+.navigation a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.navigation .btn-login {
+    width: 130px;
+    height: 45px;
+    border: 2px solid #fff;
+    border-radius: 14px;
+    outline: none;
+    cursor: pointer;
+    background-color: transparent;
+    color: white;
+    font-size: 1.1em;
+    font-weight: 650;
+    transition: all 0.3s;
+}
+
+.navigation .btn-login:hover {
+    background: #fff;
+    color: darkcyan;
+    transform: translateY(-2px);
+}
+
+/* garis tiga menu */
+.hamburger {
+    display: none;   /* default selalu tampil */
+    flex-direction: column;
+    cursor: pointer;
+    padding: 10px;
+    border: none;
+    background: none;
+    z-index: 102;
+    position: relative;
+    width: 45px;
+    height: 45px;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 3px 0;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+    display: block;
+}
+
+.hamburger:hover span {
+    background-color: #f0f0f0;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* dropdown */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Tombol dropdown (Pengajuan) */
+.dropdown-toggle {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+/* Isi dropdown (magang, penelitian) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: darkcyan;
+    margin-top: 12px;
+    min-height: 120px;
+    padding: 10px 0;
+    min-width: 180px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    z-index: 99;
+    border-radius: 8px;
+    overflow: hidden;
+    flex-direction: column;
+}
+
+/* Style link di dalam dropdown */
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background 0.3s;
+}
+
+.dropdown-content a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.dropdown.active .dropdown-content {
+    display: block;
+}
+
+/* Overlay Menu */
+.overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 101;
+    top: 0;
+    right: 0;
+    background: linear-gradient(135deg, #008B8B 0%, #20B2AA 100%);
+    overflow-y: auto;
+    overflow-x: hidden;
+    transition: width 0.4s ease;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+}
+
+
+.overlay-content {
+    position: relative;
+    top: 100px;
+    width: 100%;
+    text-align: left;
+    padding: 20px;
+}
+
+.overlay-content a,
+.overlay-content .btn-login {
+    display: block;
+    margin: 25px 0;
+    font-size: 1.3em;
+    color: white;
+    text-decoration: none;
+    padding: 15px 20px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent;
+}
+
+.overlay-content a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-left: 4px solid white;
+    transform: translateX(5px);
+}
+
+.overlay-dropdown{
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.overlay-dropdown:hover{
+    background-color: rgba(255, 255, 255, 0.1);
+    border-left: 4px solid white;
+    transform: translateX(5px);
+}
+
+.overlay-content .btn-login {
+    border: 2px solid white;
+    background-color: transparent;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 30px;
+    font-weight: 600;
+}
+
+.overlay-content .btn-login:hover {
+    background-color: white;
+    color: darkcyan;
+    transform: translateX(0);
+    border-left: 2px solid white;
+}
+
+.overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 50px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 300;
+    z-index: 103;
+}
+
+.overlay .closebtn:hover {
+    color: #ff6b6b;
+    transform: rotate(90deg);
+}
+
+/* Dropdown di overlay mobile */
+.overlay-dropdown {
+    margin: 10px 0;
+}
+.overlay-dropdown-toggle {
+    color: white;
+    font-size: 1.2em;
+    cursor: pointer;
+    display: block;
+    padding: 15px 20px;
+    border-radius: 8px;
+    transition: background 0.3s;
+    position: relative;
+    user-select: none;
+}
+.overlay-dropdown-toggle::after {
+    content: none;
+    font-size: 0.8em;
+    margin-left: 8px;
+}
+.overlay-dropdown-content {
+    display: none;
+    flex-direction: column;
+    margin-left: 20px;
+    background: none;
+}
+.overlay-dropdown.active .overlay-dropdown-content {
+    display: flex;
+}
+.overlay-dropdown-content a {
+    color: white;
+    padding: 10px 0 10px 20px;
+    text-decoration: none;
+    font-size: 1.05em;
+    border-radius: 6px;
+    transition: background 0.3s;
+}
+.overlay-dropdown-content a:hover {
+    background: rgba(255,255,255,0.08);
+}
+
+/* Login Box */
+.login-box {
+    position: relative;
+    width: 400px;
+    height: 590px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 15px;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 120px;
+    margin-bottom: 50px;
+}
+
+.login-box .form-box {
+    width: 100%;
+    padding: 40px;
+}
+
+.form-box h2 {
+    font-size: 2em;
+    color: darkslategray;
+    text-align: center;
+}
+
+.form-box h3 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: 450;
+    font-size: 0.8em;
+    text-align: center;
+}
+
+.input-box {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    border-bottom: 2px solid #162938;
+    margin: 30px 0;
+    display: flex;
+    align-items: flex-end;
+}
+
+.input-box label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 1em;
+    color: #162938;
+    font-weight: 500;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.input-box input:focus ~ label,
+.input-box input:valid ~ label,
+.input-box input.has-value ~ label {
+    top: -5px;
+    font-size: 0.85em;
+    color: darkcyan;
+}
+
+.input-box input {
+    width: 100%;
+    height: 60px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    font-weight: 600;
+    padding: 0 60px 0 5px;
+    color: #162938;
+}
+
+.input-box input:focus {
+    border-bottom-color: darkcyan;
+}
+
+.input-box .icon {
+    position: absolute;
+    right: 5px;
+    bottom: 15px;
+    font-size: 1.2em;
+    color: #162938;
+    z-index: 1;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 30px;
+    bottom: 15px;
+    font-size: 1.2em;
+    color: #162938;
+    z-index: 2;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.password-toggle:hover {
+    color: darkcyan;
+}
+
+.remember {
+    font-size: 0.9em;
+    color: #162938;
+    font-weight: 500;
+    margin: -19px 0 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.remember label input {
+    accent-color: #162938;
+    margin-right: 5px;
+}
+
+.remember a {
+    font-weight: 500;
+    color: #162938;
+    text-decoration: none;
+}
+
+.remember a:hover {
+    text-decoration: underline;
+}
+
+/* Separator */
+.pemisah {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 20px 0;
+    color: #555;
+    font-size: 0.9em;
+    font-weight: 500;
+}
+
+.pemisah span {
+    flex: 1;
+    height: 1.5px;
+    background: #ccc;
+}
+
+.pemisah p {
+    margin: 0 10px;
+    white-space: nowrap;
+}
+
+/* Google Circle Button */
+.google-circle {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0 20px;
+}
+
+.google-btn {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background:transparent;
+    border: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: box-shadow 0.3s, transform 0.2s;
+}
+
+.google-btn img {
+    width: 30px;
+    height: 30px;
+}
+
+.google-btn:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transform: translateY(-2px);
+}
+
+.btn {
+    width: 100%;
+    font-weight: bold;
+    height: 45px;
+    margin: 10px 0 15px;
+    border-radius: 15px;
+    background: darkcyan;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background: rgb(11, 91, 91);
+}
+
+.register p {
+    text-align: center;
+}
+
+.register a {
+    color:steelblue;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.register a:hover {
+    text-decoration: underline;
+}
+
+/* Footer Styles */
+.footer {
+    background: darkcyan;
+    color: white;
+    padding: 40px 5%;
+    display: flex;
+    justify-content: space-between; /* kiri vs kanan */
+    align-items: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+/* Bagian kiri (logo + title + alamat) */
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 60%;
+}
+
+/* Header: logo + judul */
+.footer-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.footer-logo {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+
+.footer-title {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+.footer-title h3 {
+    margin: 0;
+    font-size: 1.4em;
+    font-weight: 700;
+}
+
+.footer-title h4 {
+    margin: 0;
+    font-size: 1em;
+    font-weight: 500;
+}
+
+.footer-info p {
+    margin: 6px 0;
+    line-height: 1.5;
+    font-size: 0.95em;
+}
+
+.footer-info a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer-info a:hover {
+    text-decoration: underline;
+    color: #b0e0e6;
+}
+
+/* Bagian kanan (sosmed) */
+.social-media {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.social-media h4{
+    margin-right: 58px;
+    font-weight: 500;
+    margin-bottom: 12px;
+
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    color: white;
+    font-size: 1.3em;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+    background: white;
+    color: darkcyan;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    header {
+        padding: 15px 20px;
+    }
+    
+    .logo {
+        font-size: 1.2em;
+    }
+    
+    .logo1 {
+        font-size: 0.9em;
+    }
+    
+    .logosby {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .navigation {
+        display: none;
+    }
+    
+    .hamburger {
+        display: flex;
+    }
+    
+    .login-box {
+        width: 90%;
+        margin: 30px 20px;
+        height: auto;
+        min-height: 440px;
+    }
+    
+    .login-box .form-box {
+        padding: 30px 20px;
+    }
+
+    .input-box .icon {
+        font-size: 1.2em;
+        right: 5px;
+        bottom: 15px;
+    }
+
+    .password-toggle {
+        font-size: 1.2em;
+        right: 30px;
+        bottom: 15px;
+    }
+
+    .pemisah p {
+        font-size: 0.85em;
+    }
+    .google-btn {
+        width: 50px;
+        height: 50px;
+    }
+    .google-btn img {
+        width: 25px;
+        height: 25px;
+    }
+
+    /* Footer responsive */
+    .footer {
+        flex-direction: column;
+        text-align: left;
+        padding: 30px 25px;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 20px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .footer-header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .footer-title {
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+    }
+
+    .footer-title h3 {
+        margin: 0;
+        font-size: 1.4em;
+        font-weight: 700;
+        white-space: nowrap;
+    }
+
+    .footer-title h4 {
+        margin: 0;
+        font-size: 1em;
+        font-weight: 500;
+    }
+
+    .footer-info p {
+        margin: 6px 0;
+        line-height: 1.5;
+        font-size: 0.95em;
+    }
+
+    .social-media h4{
+    margin-left: 60px;
+    margin-bottom: 15px;
+    }
+
+    .social-media {
+        align-items: center;
+        width: 100%;
+    }
+
+    .social-icons {
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-container {
+        gap: 10px;
+    }
+    
+    .logo {
+        font-size: 1em;
+    }
+    
+    .logo1 {
+        font-size: 0.8em;
+    }
+    
+    .logosby {
+        width: 35px;
+        height: 35px;
+    }
+    
+    header {
+        padding: 10px 15px;
+    }
+    
+    .login-box {
+        margin-top: 110px;
+        margin-bottom: 40px;
+    }
+
+    .hamburger {
+        width: 40px;
+        height: 40px;
+    }
+
+    .hamburger span {
+        width: 20px;
+    }
+}

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="LogoPemkot.png" alt="LogoPemkot" class="logosby">
+            <div class="logo-text">
+                <h2 class="logo">Dinas Kesehatan</h2>
+                <h3 class="logo1">Kota Surabaya</h3>
+            </div>
+        </div>
+        
+        <nav class="navigation">
+            <a href="#">Beranda</a>
+            <a href="#">Pengumuman</a>
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle">
+                 Pengajuan <ion-icon name="arrow-dropdown"></ion-icon>
+                </a>
+                     <div class="dropdown-content">
+                    <a href="#">Magang</a>
+                    <a href="#">Penelitian</a>
+                </div>
+            </div>
+
+            <a href="#">Profil</a>
+            <button class="btn-login" onclick="window.location.href='login.html'">Login</button>
+        </nav>
+
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+
+    <!-- Overlay Menu -->
+        <div id="overlayMenu" class="overlay">
+        <a href="javascript:void(0)" class="closebtn">&times;</a>
+            <div class="overlay-content">
+            <a href="#">Beranda</a>
+            <a href="#">Pengumuman</a>
+
+            <div class="overlay-dropdown">
+                <div class="overlay-dropdown-toggle">Pengajuan<ion-icon name="arrow-dropdown"></ion-icon></div>
+                    <div class="overlay-dropdown-content">
+                    <a href="#">Magang</a>
+                    <a href="#">Penelitian</a>
+                </div>
+            </div>
+            <a href="#">Profil</a>
+            <button class="btn-login" onclick="window.location.href='login.html'">Login</button>
+        </div>
+    </div>
+
+
+    <!-- kotak login -->
+    <div class="login-box">
+        <div class="form-box login">
+            <h2>Masuk</h2>
+            <h3><p>Gunakan email dan kata sandi yang terdaftar <br>
+                untuk mengakses layanan kami</p></h3>
+            <form action="#">
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                    <input type="email" id="email" required>
+                    <label for="email">Email</label>
+                </div>
+
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="lock"></ion-icon></span>
+                    <span class="password-toggle" id="togglePassword">
+                        <ion-icon name="eye-off" id="eyeIcon"></ion-icon>
+                    </span>
+                    <input type="password" id="password" required>
+                    <label for="password">Password</label>
+                </div>
+
+                <div class="remember">
+                    <label><input type="checkbox">Remember me</label>
+                    <a href="#">Lupa password?</a>
+                </div>
+
+                <div class="pemisah">
+                    <span></span>
+                    <p>Or Sign up With</p>
+                    <span></span>
+                </div>
+
+                <div class="google-circle">
+                    <a href="https://google.com" class="google-btn" onclick="alert('Login dengan google')">
+                        <img src="https://www.svgrepo.com/show/355037/google.svg" alt="Google">
+                    </a>
+                </div>
+
+                <div>
+                    <button type="submit" class="btn">Login</button>
+                </div>
+
+                <div class="register">
+                    <p>belum mempunyai akun? <a href="register.html" class="register-link">Register</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <!-- Header dengan logo dan judul -->
+            <div class="footer-header">
+                <img src="LogoPemkot.png" alt="Logo Dinas Kesehatan" class="footer-logo">
+                <div class="footer-title">
+                    <h3>Dinas Kesehatan</h3>
+                    <h4>Kota Surabaya</h4>
+                </div>
+            </div>
+            
+            <!-- Informasi alamat -->
+            <div class="footer-info">
+                <p class="alamat">Jl. Raya Jemursari No.197, Sidosermo, Kec. Wonocolo, Surabaya,</p>
+                <p>Jawa Timur 60239</p>
+                <p>Telp. (031) 8439473 - Fax. 0</p>
+                <p class="email"><a href="https://dinkes-surabaya.com/">dinkes@dinkes-surabaya.com</a></p>
+            </div>
+        </div>  
+        
+        <div class="social-media">
+            <h4>Media Sosial</h4>
+            <div class="social-icons">
+                <a href="https://youtube.com" target="_blank" title="YouTube">
+                    <ion-icon name="logo-youtube"></ion-icon>
+                </a>
+                <a href="https://instagram.com" target="_blank" title="Instagram">
+                    <ion-icon name="logo-instagram"></ion-icon>
+                </a>
+                <a href="https://facebook.com" target="_blank" title="Facebook">
+                    <ion-icon name="logo-facebook"></ion-icon>
+                </a>
+                <a href="https://twitter.com" target="_blank" title="Twitter">
+                    <ion-icon name="logo-twitter"></ion-icon>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Ionicons Scripts -->
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <script src="login.js"></script>
+    
+</body>
+</html>
